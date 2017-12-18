@@ -4,6 +4,7 @@ module OneSignalUser
 
     included do
         before_Action :set_onesignal_user
+        helper_method :current_onesignal
     end
 
     def current_onesignal
@@ -12,7 +13,6 @@ module OneSignalUser
         current_onesignal[OneSignalUser::Configuration.devise_class.downcase.to_sym] = OneSignalUser::Configuration.devise_class.constantize&.find_by(onesignal_id: current_onesignal[:id]) if cookies.has_key?(:oneSignalUserId)
         current_onesignal
     end
-    helper_method :current_onesignal
 
     private
 
