@@ -1,0 +1,53 @@
+var useragentid = null;
+var OneSignal = window.OneSignal || [];
+
+
+
+function OneSignalInit() {
+
+    // Do NOT call init() twice
+    OneSignal.push([ 'init', {
+        // Your other init options here
+        appId: '<%= DeviseOneSignal::Configuration.app_id %>',
+        autoRegister: <%= DeviseOneSignal::Configuration.auto_register ? 'true' : 'false' %>,
+        welcomeNotification: {
+            disable: true,
+            title: '',
+            message: ''
+        },
+        notifyButton: {
+            enable: false
+        },
+        persistNotification: false // Automatically dismiss the notification after ~20 seconds in Chrome Deskop v47+
+    }]);
+
+    // Firstly this will check user id
+    OneSignal.push(function() {
+        OneSignal.getUserId().then(function(userId) {
+            if ( userId != null ) {
+                useragentid = userId;
+                document.cookie = 'oneSignalUserId=' + userId;
+            };
+            OneSignal.push([ 'getNotificationPermission', function(permission) {
+                document.cookie = 'oneSignalUserPermission=' + permission;
+            }]);
+        });
+    });
+
+};
+
+
+
+function OneSignalSubscribe() {
+    if ( useragentid != null ) {
+        OneSignal.setSubscription(true);
+    } else {
+        OneSignal.registerForPushNotifications({
+            modalPrompt: true
+        });
+    };
+}
+
+function OneSignalUnsubscribe() {
+    OneSignal.setSubscription(false);
+}
