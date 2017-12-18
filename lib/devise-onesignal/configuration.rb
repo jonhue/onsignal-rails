@@ -1,17 +1,17 @@
 module DeviseOneSignal
     class Configuration
 
-        attr_accessor :app_id
+        cattr_accessor :app_id, instance_accessor: false
 
-        attr_writer :auto_register
-        def auto_register
-            @auto_register || false
+        def self.auto_register
+            @@auto_register || false
         end
+        cattr_writer :auto_register, instance_accessor: false
 
-        attr_writer :devise_class
-        def devise_class
-            @devise_class || 'User'
+        def self.devise_class
+            @@devise_class || 'User'
         end
+        cattr_writer :devise_class, instance_accessor: false
 
     end
 end

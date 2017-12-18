@@ -103,6 +103,10 @@ $ User.first.onesignal_permission
 
 ## Configuration
 
+```ruby
+DeviseOneSignal::Configuration.app_id = 'OneSignal APP ID'
+```
+
 | Option              | Description                                                           | Default |
 | ------------------- | --------------------------------------------------------------------- | ------- |
 | `app_id` (required) | OneSignal application ID                                              | `nil`   |

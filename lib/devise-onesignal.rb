@@ -2,9 +2,9 @@ require 'devise-onesignal/version'
 
 module DeviseOneSignal
 
-    require 'devise-onesignal/configuration'
+    autoload :Configuration, 'devise-onesignal/configuration'
 
     class Engine < ::Rails::Engine
     end
-    
+
 end
