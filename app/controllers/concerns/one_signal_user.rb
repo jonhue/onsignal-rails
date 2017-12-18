@@ -11,7 +11,7 @@ module OneSignalUser
         current_onesignal = {}
         current_onesignal[:id] = cookies[:oneSignalUserId]
         current_onesignal[:permission] = cookies[:oneSignalUserPermission]
-        current_onesignal[OneSignalUser::Configuration.devise_class.downcase.to_sym] = OneSignalUser::Configuration.devise_class.constantize&.find_by(onesignal_id: current_onesignal[:id]) if cookies.has_key?(:oneSignalUserId)
+        current_onesignal[DeviseOneSignal::Configuration.devise_class.downcase.to_sym] = DeviseOneSignal::Configuration.devise_class.constantize&.find_by(onesignal_id: current_onesignal[:id]) if cookies.has_key?(:oneSignalUserId)
         current_onesignal.each do |key, value|
             current_onesignal.delete(key) if value == nil
         end

@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 1.1.1 - 2017-12-18
+
+* bugfixes
+    * fixed use of wrong class name
+
 ### 1.1.0 - 2017-12-18
 
 * enhancements
