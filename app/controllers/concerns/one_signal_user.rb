@@ -9,7 +9,7 @@ module OneSignalUser
     def current_onesignal
         current_onesignal[:id] = cookies[:oneSignalUserId]
         current_onesignal[:permission] = cookies[:oneSignalUserPermission]
-        current_onesignal[OneSignalUser::Configuration.devise_class.lowercase.to_sym] = OneSignalUser::Configuration.devise_class.constantize&.find_by(onesignal_id: current_onesignal[:id]) if cookies.has_key?(:oneSignalUserId)
+        current_onesignal[OneSignalUser::Configuration.devise_class.downcase.to_sym] = OneSignalUser::Configuration.devise_class.constantize&.find_by(onesignal_id: current_onesignal[:id]) if cookies.has_key?(:oneSignalUserId)
         current_onesignal
     end
     helper_method :current_onesignal

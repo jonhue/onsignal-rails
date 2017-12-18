@@ -1,6 +1,6 @@
 class DeviseOneSignalMigration < ActiveRecord::Migration<%= migration_version %>
     def change
-        add_column :<%= DeviseOneSignal::Configuration.devise_class.lowercase.pluralize %>, :onesignal_id, :string, index: true, unique: true
-        add_column :<%= DeviseOneSignal::Configuration.devise_class.lowercase.pluralize %>, :onesignal_permission, :string
+        add_column :<%= DeviseOneSignal::Configuration.devise_class.downcase.pluralize %>, :onesignal_id, :string, index: true, unique: true
+        add_column :<%= DeviseOneSignal::Configuration.devise_class.downcase.pluralize %>, :onesignal_permission, :string
     end
 end

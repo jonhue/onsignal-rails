@@ -110,7 +110,7 @@ DeviseOneSignal::Configuration.app_id = 'OneSignal APP ID'
 | Option              | Description                                                           | Default |
 | ------------------- | --------------------------------------------------------------------- | ------- |
 | `app_id` (required) | OneSignal application ID                                              | `nil`   |
-| `devise_class`      | Devise class                                                          | `User`  |
+| `devise_class`      | Devise class                                                          | `'User'`  |
 | `auto_register`     | Whether or not the app should automatically try to subscribe the user | `false` |
 
 ---
