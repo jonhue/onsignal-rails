@@ -10,6 +10,7 @@ Implement user targeted cross-platform notifications with OneSignal & Devise in 
 
 * [Installation](#installation)
 * [Usage](#usage)
+* [Configuration](#configuration)
 * [To Do](#to-do)
 * [Contributing](#contributing)
     * [Contributors](#contributors)
