@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/devise-onesignal.svg)](https://badge.fury.io/rb/devise-onesignal) <img src="https://travis-ci.org/jonhue/devise-onesignal.svg?branch=master" />
 
-Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app.
+Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. Working well together with [onesignal-ruby](https://github.com/tbalthazar/onesignal-ruby) to access the OneSignal API.
 
 ---
 
