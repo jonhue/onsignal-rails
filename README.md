@@ -60,6 +60,14 @@ Now let's include the neccessary javascript files in our application (`apps/asse
 //= require devise-onesignal
 ```
 
+Then include the `OneSignalUser` concern in your `ApplicationController`:
+
+```ruby
+class ApplicationController < ActionController::Base
+    include OneSignalUser
+end
+```
+
 As a last step initialize the javascript component when your assets load. If you are using Rails 5 with Turbolinks, this could look like this:
 
 ```js

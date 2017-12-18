@@ -3,7 +3,7 @@ module OneSignalUser
     extend ActiveSupport::Concern
 
     included do
-        before_Action :set_onesignal_user
+        before_action :set_onesignal_user
         helper_method :current_onesignal
     end
 
