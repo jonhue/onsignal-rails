@@ -92,7 +92,7 @@ devise-onesignal introduces an `current_onesignal` method available in your cont
 
 ```ruby
 $ current_onesignal
-{id: 'e9b66bc5-a1e5-4f3f-8a3e-894f576b193a', permission: 'allow', user: UserObject}
+{id: 'e9b66bc5-a1e5-4f3f-8a3e-894f576b193a', permission: 'granted', user: UserObject}
 ```
 
 **Note:** When no user is associated with that ID, the returned hash does not include the key.
@@ -105,7 +105,7 @@ You can access the OneSignal PlayerId and Permission from the User object:
 $ User.first.onesignal_id
 'e9b66bc5-a1e5-4f3f-8a3e-894f576b193a'
 $ User.first.onesignal_permission
-'allow'
+'granted'
 ```
 
 ---
@@ -116,11 +116,13 @@ $ User.first.onesignal_permission
 DeviseOneSignal::Configuration.app_id = 'OneSignal APP ID'
 ```
 
-| Option              | Description                                                           | Default |
-| ------------------- | --------------------------------------------------------------------- | ------- |
-| `app_id` (required) | OneSignal application ID                                              | `nil`   |
-| `devise_class`      | Devise class                                                          | `'User'`  |
-| `auto_register`     | Whether or not the app should automatically try to subscribe the user | `false` |
+| Option                 | Description                                                                | Default  |
+| ---------------------- | -------------------------------------------------------------------------- | -------- |
+| `app_id` (required)    | OneSignal application ID                                                   | `nil`    |
+| `devise_class`         | Devise class                                                               | `'User'` |
+| `auto_register`        | Whether or not the app should automatically try to subscribe the user      | `false`  |
+| `persist_notification` | Automatically dismiss the notification after ~20 seconds in Chrome         | `false`  |
+| `subscribe_with_modal` | Show a modal instead of a native window when subscribing user to OneSignal | `false`  |
 
 ---
 

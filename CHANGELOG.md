@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 1.2.1 - 2017-12-18
+
+* enhancements
+    * add more configuration options
+
 ### 1.1.1 - 2017-12-18
 
 * bugfixes

@@ -18,7 +18,7 @@ function OneSignalInit() {
         notifyButton: {
             enable: false
         },
-        persistNotification: false // Automatically dismiss the notification after ~20 seconds in Chrome Deskop v47+
+        persistNotification: <%= DeviseOneSignal::Configuration.persist_notification ? 'true' : 'false' %> // Automatically dismiss the notification after ~20 seconds in Chrome Desktop v47+
     }]);
 
     // Firstly this will check user id
@@ -43,7 +43,7 @@ function OneSignalSubscribe() {
         OneSignal.setSubscription(true);
     } else {
         OneSignal.registerForPushNotifications({
-            modalPrompt: true
+            modalPrompt: <%= DeviseOneSignal::Configuration.subscribe_with_modal ? 'true' : 'false' %>
         });
     };
 }
