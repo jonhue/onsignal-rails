@@ -4,6 +4,15 @@
 
 * nothing yet
 
+### 2.0.0 - 2017-12-19
+
+* features
+    * automatically include helpers and concerns
+    * configuration by passing a block to `configure`
+    * introducing `Device` activerecord model
+* enhancements
+    * rename `current_onesignal` method to `current_device`
+
 ### 1.2.1 - 2017-12-18
 
 * enhancements
