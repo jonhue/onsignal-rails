@@ -8,8 +8,8 @@ function OneSignalInit() {
     // Do NOT call init() twice
     OneSignal.push([ 'init', {
         // Your other init options here
-        appId: '<%= DeviseOneSignal.configuration.app_id %>',
-        autoRegister: <%= DeviseOneSignal.configuration.auto_register ? 'true' : 'false' %>,
+        appId: '<%= DeviseOnesignal.configuration.app_id %>',
+        autoRegister: <%= DeviseOnesignal.configuration.auto_register ? 'true' : 'false' %>,
         welcomeNotification: {
             disable: true,
             title: '',
@@ -18,7 +18,7 @@ function OneSignalInit() {
         notifyButton: {
             enable: false
         },
-        persistNotification: <%= DeviseOneSignal.configuration.persist_notification ? 'true' : 'false' %> // Automatically dismiss the notification after ~20 seconds in Chrome Desktop v47+
+        persistNotification: <%= DeviseOnesignal.configuration.persist_notification ? 'true' : 'false' %> // Automatically dismiss the notification after ~20 seconds in Chrome Desktop v47+
     }]);
 
     // Firstly this will check user id
@@ -43,7 +43,7 @@ function OneSignalSubscribe() {
         OneSignal.setSubscription(true);
     } else {
         OneSignal.registerForPushNotifications({
-            modalPrompt: <%= DeviseOneSignal.configuration.subscribe_with_modal ? 'true' : 'false' %>
+            modalPrompt: <%= DeviseOnesignal.configuration.subscribe_with_modal ? 'true' : 'false' %>
         });
     };
 }
