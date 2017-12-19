@@ -1,23 +1,12 @@
 module DeviseOnesignal
-    module Device
+    module DeviceConcern
 
         extend ActiveSupport::Concern
 
+        extend DeviseOnesignal::DeviceHelper
+
         included do
             before_action :set_device
-            helper_method :current_device
-        end
-
-        def current_device
-            if cookies[:oneSignalUserId].nil?
-                device = Device.new
-                device.user = current_user if current_user
-                device.permission = cookies[:oneSignalUserPermission]
-                device.last_used = Time.now
-            else
-                device = Device.find_by(onesignal_id: cookies[:oneSignalUserId])
-            end
-            device
         end
 
         private

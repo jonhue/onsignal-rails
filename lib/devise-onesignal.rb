@@ -15,7 +15,8 @@ module DeviseOnesignal
 
     autoload :DeviceLib, 'devise-onesignal/device_lib'
 
-    autoload :Device, 'devise-onesignal/device'
+    autoload :DeviceConcern, 'devise-onesignal/device_concern'
+    autoload :DeviceHelper, 'devise-onesignal/device_helper'
     require 'devise-onesignal/railtie'
 
     class Engine < ::Rails::Engine
