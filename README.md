@@ -125,7 +125,7 @@ Just call `OneSignalSubscribe();` in your frontend code and OneSignal will ask y
 
 **Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.
 
-If you want to completely remove a user from OneSignal, call `OneSignalSubscribe();` in your javascript.
+If you want to completely remove a user from OneSignal, call `OneSignalUnsubscribe();` in your javascript.
 
 ---
 
