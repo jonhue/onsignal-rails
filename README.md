@@ -140,9 +140,13 @@ end
 ```
 
 **`app_id` (required)** Your OneSignal app id. Create one here: https://onesignal.com
+
 **`devise_class`** Specify your devise class. Defaults to `'User'`.
+
 **`auto_register`** Automatically try to subscribe the user when loading a page. Defaults to `false`.
+
 **`persist_notification`** Automatically dismiss the notification after ~20 seconds in Chrome. Defaults to `false`.
+
 **`subscribe_with_modal`** Show a modal instead of a native browser window when subscribing a user to OneSignal. Defaults to `false`.
 
 ---
