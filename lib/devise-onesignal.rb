@@ -2,6 +2,8 @@ require 'devise-onesignal/version'
 
 module DeviseOnesignal
 
+    autoload :Configuration, 'devise-onesignal/configuration'
+
     class << self
         attr_accessor :configuration
     end
@@ -10,8 +12,6 @@ module DeviseOnesignal
         self.configuration ||= Configuration.new
         yield configuration
     end
-
-    require 'devise-onesignal/configuration'
 
     autoload :DeviceLib, 'devise-onesignal/device_lib'
 

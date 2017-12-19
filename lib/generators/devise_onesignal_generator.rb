@@ -21,7 +21,7 @@ class DeviseOnesignalGenerator < Rails::Generators::Base
     end
 
     def create_device_migration_file
-        migration_template 'devices_migration.rb.erb', 'db/migrate/devise-onesignal_migration.rb', migration_version: migration_version
+        migration_template 'devices_migration.rb.erb', 'db/migrate/devise_onesignal_migration.rb', migration_version: migration_version
     end
     def create_device_model
         template 'device_model.rb', 'app/models/device.rb'
