@@ -3,7 +3,7 @@ require File.expand_path(File.join('..', 'lib', 'devise-onesignal', 'version'), 
 
 Gem::Specification.new do |gem|
     gem.name                  = 'devise-onesignal'
-    gem.version               = DeviseOneSignal::VERSION
+    gem.version               = DeviseOnesignal::VERSION
     gem.platform              = Gem::Platform::RUBY
     gem.summary               = 'Implement user targeted cross-platform notifications in your Rails app'
     gem.description           = 'Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app.'
@@ -21,6 +21,6 @@ Gem::Specification.new do |gem|
 
     gem.add_development_dependency 'bundler', '~> 1.16'
     gem.add_development_dependency 'rake', '~> 10.0'
-    gem.add_dependency 'rails', '>= 4.0'
+    gem.add_dependency 'rails', '>= 5.0'
     gem.add_dependency 'devise', '~> 4.3'
 end
