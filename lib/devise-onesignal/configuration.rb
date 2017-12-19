@@ -1,27 +1,18 @@
-module DeviseOneSignal
+module DeviseOnesignal
     class Configuration
 
-        cattr_accessor :app_id, instance_accessor: false
+        attr_accessor :app_id
+        attr_accessor :devise_class
+        attr_accessor :auto_register
+        attr_accessor :persist_notification
+        attr_accessor :subscribe_with_modal
 
-        def self.devise_class
-            @@devise_class || 'User'
+        def initialize
+            @devise_class = 'User'
+            @auto_register = false
+            @persist_notification = false
+            @subscribe_with_modal = false
         end
-        cattr_writer :devise_class, instance_accessor: false
-
-        def self.auto_register
-            @@auto_register || false
-        end
-        cattr_writer :auto_register, instance_accessor: false
-
-        def self.persist_notification
-            @@persist_notification || false
-        end
-        cattr_writer :persist_notification, instance_accessor: false
-
-        def self.subscribe_with_modal
-            @@subscribe_with_modal || false
-        end
-        cattr_writer :subscribe_with_modal, instance_accessor: false
 
     end
 end

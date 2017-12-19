@@ -1,0 +1,16 @@
+class DeviseOnesignalMigration < ActiveRecord::Migration<%= migration_version %>
+    def change
+        create_table :devices do |t|
+
+            t.references :<%= DeviseOnesignal.configuration.devise_class.downcase %>, index: true
+
+            t.string :onesignal_id, index: true, unique: true
+            t.string :onesignal_permission
+
+            t.datetime :last_used
+
+            t.timestamps
+
+        end
+    end
+end

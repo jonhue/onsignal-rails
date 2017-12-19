@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'rails/generators/migration'
 
-class DeviseOneSignalGenerator < Rails::Generators::Base
+class DeviseOnesignalGenerator < Rails::Generators::Base
 
     include Rails::Generators::Migration
 
@@ -12,16 +12,19 @@ class DeviseOneSignalGenerator < Rails::Generators::Base
         if ActiveRecord::Base.timestamped_migrations
             Time.now.utc.strftime '%Y%m%d%H%M%S'
         else
-            "%.3d" % (current_migration_number(dirname) + 1)
+            "%.3d" % ( current_migration_number(dirname) + 1 )
         end
-    end
-
-    def create_migration_file
-        migration_template 'migration.rb.erb', 'db/migrate/devise_one_signal_migration.rb', migration_version: migration_version
     end
 
     def create_initializer
         template 'initializer.rb', 'config/initializers/devise-onesignal.rb'
+    end
+
+    def create_device_migration_file
+        migration_template 'devices_migration.rb.erb', 'db/migrate/devise-onesignal_migration.rb', migration_version: migration_version
+    end
+    def create_device_model
+        template 'device_model.rb', 'app/models/device.rb'
     end
 
     def show_readme

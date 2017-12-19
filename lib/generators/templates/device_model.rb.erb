@@ -1,0 +1,7 @@
+class Device < ActiveRecord::Base
+
+    extend DeviseOnesignal::DeviceLib
+
+    belongs_to :<%= DeviseOnesignal.configuration.devise_class.downcase %>, optional: true
+
+end
