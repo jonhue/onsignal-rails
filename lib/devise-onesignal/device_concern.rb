@@ -16,7 +16,7 @@ module DeviseOnesignal
                 onesignal_user_id = cookies[:oneSignalUserId]
                 device = Device.find_or_create_by! onesignal_id: onesignal_user_id
                 device.user = current_user if current_user
-                device.permission = cookies[:oneSignalUserPermission]
+                device.onesignal_permission = cookies[:oneSignalUserPermission]
                 device.last_used = Time.now
                 device.save!
             end

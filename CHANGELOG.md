@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 2.0.1 - 2017-12-20
+
+* bugfixes
+    * fixed `undefined method 'permission=' for #<Device>`
+
 ### 2.0.0 - 2017-12-19
 
 * features
