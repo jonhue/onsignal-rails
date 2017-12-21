@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 3.0.1 - 2017-12-21
+
+* bugfixes
+    * custom `set_device_owner` method was not overriding default
+
 ### 3.0.0 - 2017-12-21
 
 * features
