@@ -1,13 +1,11 @@
-var useragentid = null;
+var OneSignalPlayerId = null;
 var OneSignal = window.OneSignal || [];
 
 
 
 function OneSignalInit() {
 
-    // Do NOT call init() twice
     OneSignal.push([ 'init', {
-        // Your other init options here
         appId: '<%= DeviseOnesignal.configuration.app_id %>',
         autoRegister: <%= DeviseOnesignal.configuration.auto_register ? 'true' : 'false' %>,
         welcomeNotification: {
@@ -21,15 +19,14 @@ function OneSignalInit() {
         persistNotification: <%= DeviseOnesignal.configuration.persist_notification ? 'true' : 'false' %> // Automatically dismiss the notification after ~20 seconds in Chrome Desktop v47+
     }]);
 
-    // Firstly this will check user id
     OneSignal.push(function() {
-        OneSignal.getUserId().then(function(userId) {
-            if ( userId != null ) {
-                useragentid = userId;
-                document.cookie = 'oneSignalUserId=' + userId;
+        OneSignal.getUserId().then(function(playerId) {
+            if ( playerId != null ) {
+                OneSignalPlayerId = playerId;
+                document.cookie = 'oneSignalPlayerId=' + playerId;
             };
             OneSignal.push([ 'getNotificationPermission', function(permission) {
-                document.cookie = 'oneSignalUserPermission=' + permission;
+                document.cookie = 'oneSignalPlayerPermission=' + permission;
             }]);
         });
     });
@@ -39,7 +36,7 @@ function OneSignalInit() {
 
 
 function OneSignalSubscribe() {
-    if ( useragentid != null ) {
+    if ( OneSignalPlayerId != null ) {
         OneSignal.setSubscription(true);
     } else {
         OneSignal.registerForPushNotifications({
