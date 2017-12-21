@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/devise-onesignal.svg)](https://badge.fury.io/rb/devise-onesignal) <img src="https://travis-ci.org/jonhue/devise-onesignal.svg?branch=master" />
 
-Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app.
+Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. This gem can also be used without Devise, but it is primarily intended to be used along with some sort of user-management-system.
 
 This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
 
@@ -56,15 +56,13 @@ To wrap things up, migrate the changes into your database:
 
 It is time to [create your OneSignal app](https://onesignal.com) if you haven't already and set your application ID in the created initializer (`config/initializers/devise-onesignal.rb`).
 
-Then add ...
+Define an association in those models whose objects are supposed to be associated with OneSignal players. For example `User` in `app/models/user.rb`.
 
 ```ruby
 has_many :devices
 ```
 
-... to your devise class. For example `User` in `app/models/user.rb`.
-
-Now let's include the neccessary javascript files in our application (`apps/assets/javascripts/application.js`):
+Now let us include the neccessary javascript files in our application (`apps/assets/javascripts/application.js`):
 
 ```js
 //= require OneSignalSDK
@@ -81,6 +79,20 @@ document.addEventListener( 'turbolinks:load', function() {
 
 ## Usage
 
+### Devise object
+
+You most likely want to associate your devise object (e.g. `current_user`) with your OneSignal integration. Now, if your Devise model is called `User` and the `current_user` method is available you don't have to worry about that.
+
+Let's say our Devise model is named `Admin`. Just add `private` method to your `ApplicationController`:
+
+```ruby
+def set_device_owner
+    current_admin if current_admin
+end
+```
+
+**Note:** Essentially `set_device_owner` has to return a class object *or* `nil`.
+
 ### Device methods
 
 devise-onesignal introduces a `Device` activerecord model. Every object of your devise class can have multiple devices, one for each device / browser they enabled OneSignal at least once.
@@ -88,8 +100,8 @@ devise-onesignal introduces a `Device` activerecord model. Every object of your 
 ```ruby
 d = Device.first
 
-# Returns user (or other devise object) that this device belongs to. Can return `nil`.
-d.user
+# Returns object associated with device. Can return `nil`.
+d.owner
 
 # Returns OneSignal player id
 d.onesignal_id
@@ -131,7 +143,7 @@ If you want to completely remove a user from OneSignal, call `OneSignalUnsubscri
 
 ## Configuration
 
-You can configure devise-onesignal by passing a block to `configure`:
+You can configure devise-onesignal by passing a block to `configure`. This can be done in `config/initializers/devise-onesignal.rb`:
 
 ```ruby
 DeviseOnesignal.configure do |config|

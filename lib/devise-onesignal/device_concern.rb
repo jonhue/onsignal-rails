@@ -17,13 +17,13 @@ module DeviseOnesignal
                 device = Device.find_or_create_by! onesignal_id: onesignal_player_id
                 device.onesignal_permission = cookies[:oneSignalPlayerPermission]
                 device.last_used = Time.now
-                set_device_owner device
+                device.owner = set_device_owner
                 device.save!
             end
         end
 
-        def set_device_owner resource
-            resource.owner = current_user if current_user
+        def set_device_owner
+            current_user if current_user
         end
 
     end
