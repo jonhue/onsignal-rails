@@ -12,6 +12,7 @@ This gem works well together with [notifications-rails](https://github.com/jonhu
 
 * [Installation](#installation)
 * [Usage](#usage)
+    * [Devise object](#devise-object)
     * [Device methods](#device-methods)
     * [current_device](#current_device)
     * [Subscribing](#subscribing)
