@@ -61,7 +61,7 @@ It is time to [create your OneSignal app](https://onesignal.com) if you haven't 
 Define an association in those models whose objects are supposed to be associated with OneSignal players. For example `User` in `app/models/user.rb`.
 
 ```ruby
-has_many :devices
+has_many :devices, as: :owner
 ```
 
 Now let us include the neccessary javascript files in our application (`apps/assets/javascripts/application.js`):
