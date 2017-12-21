@@ -20,6 +20,7 @@ This gem works well together with [notifications-rails](https://github.com/jonhu
 * [To Do](#to-do)
 * [Contributing](#contributing)
     * [Contributors](#contributors)
+    * [Semantic versioning](#semantic-versioning)
 * [License](#license)
 
 ---
@@ -180,6 +181,10 @@ We hope that you will consider contributing to `devise-onesignal`. Please read t
 Give the people some :heart: who are working on this project. See them all at:
 
 https://github.com/jonhue/devise-onesignal/graphs/contributors
+
+### Semantic Versioning
+
+Sandboxy follows Semantic Versioning 2.0 as defined at http://semver.org.
 
 ## License
 

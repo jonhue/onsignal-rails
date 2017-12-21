@@ -4,6 +4,14 @@
 
 * nothing yet
 
+### 3.0.0 - 2017-12-21
+
+* features
+    * made Devise optional
+    * added `owner` association to `Device` model
+* enhancements
+    * renamed elements of the javascript API
+
 ### 2.0.1 - 2017-12-20
 
 * bugfixes
