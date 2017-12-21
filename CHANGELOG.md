@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 3.0.2 - 2017-12-21
+
+* bugfixes
+    * fixed `undefined method 'set_device_owner' for ApplicationController:Class`
+
 ### 3.0.1 - 2017-12-21
 
 * bugfixes
