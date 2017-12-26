@@ -4,7 +4,7 @@
 
 Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. Can also be used without Devise, but is primarily intended to be used along with some sort of user-management-system.
 
-This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
+This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) and its [notification-pusher-onesignal](https://github.com/jonhue/notifications-rails/tree/master/notification-pusher/notification-pusher-onesignal) component which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
 
 ---
 
