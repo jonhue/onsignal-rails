@@ -4,7 +4,7 @@
 
 Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. Can also be used without Devise, but is primarily intended to be used along with some sort of user-management-system.
 
-This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
+This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) and its [notification-pusher-onesignal](https://github.com/jonhue/notifications-rails/tree/master/notification-pusher/notification-pusher-onesignal) component which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
 
 ---
 
@@ -61,7 +61,7 @@ It is time to [create your OneSignal app](https://onesignal.com) if you haven't 
 Define an association in those models whose objects are supposed to be associated with OneSignal players. For example `User` in `app/models/user.rb`.
 
 ```ruby
-has_many :devices, as: :owner
+has_devices
 ```
 
 Now let us include the neccessary javascript files in our application (`apps/assets/javascripts/application.js`):
@@ -125,6 +125,20 @@ d.onesignal_disabled?
 
 # If device has been set previously to receive notifications or not
 d.onesignal_set?
+```
+
+### has_devices
+
+This method makes `devices` available in your models. Let's say you have a user which has multiple devices he has enabled OneSignal on:
+
+```ruby
+u = User.first
+
+# All devices of a user
+u.devices
+
+# All OneSignal Player ID's of a user returned as a hash
+u.onesignal_player_ids
 ```
 
 ### current_device
