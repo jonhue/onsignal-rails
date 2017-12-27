@@ -173,7 +173,7 @@ To propose your ideas, initiate the discussion by adding a [new issue](https://g
 
 ## Contributing
 
-We hope that you will consider contributing to `devise-onesignal`. Please read this short overview for some information about how to get started:
+We hope that you will consider contributing to devise-onesignal. Please read this short overview for some information about how to get started:
 
 [Learn more about contributing to this repository](https://github.com/jonhue/devise-onesignal/blob/master/CONTRIBUTING.md), [Code of Conduct](https://github.com/jonhue/devise-onesignal/blob/master/CODE_OF_CONDUCT.md)
 
