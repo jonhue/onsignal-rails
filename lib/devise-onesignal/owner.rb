@@ -19,6 +19,7 @@ module DeviseOnesignal
                 self.devices.each do |device|
                     onesignal_player_ids << device.onesignal_id
                 end
+                onesignal_player_ids
             end
 
         end
