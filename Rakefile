@@ -1,6 +1,7 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 
+system 'bundle'
 system "gem build devise-onesignal.gemspec"
 
 
