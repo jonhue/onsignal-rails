@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 3.1.1 - 2017-12-28
+
+* bugfixes
+    * fix `has_devices` method
+
 ### 3.1.0 - 2017-12-27
 
 * features

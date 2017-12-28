@@ -11,6 +11,9 @@ module DeviseOnesignal
             ActiveSupport.on_load :action_view do
                 include DeviseOnesignal::DeviceHelper
             end
+            ActiveSupport.on_load :active_record do
+                include DeviseOnesignal::Owner
+            end
         end
 
     end
