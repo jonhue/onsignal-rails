@@ -85,7 +85,7 @@ document.addEventListener( 'turbolinks:load', function() {
 
 You most likely want to associate your devise object (e.g. `current_user`) with your OneSignal integration. Now, if your Devise model is called `User` and the `current_user` method is available you don't have to worry about that.
 
-Let's say our Devise model is named `Admin`. Just add a `private` method to your `ApplicationController`:
+Let's say our Devise model is named `Admin`. Just add a `protected` method to your `ApplicationController`:
 
 ```ruby
 def set_device_owner
