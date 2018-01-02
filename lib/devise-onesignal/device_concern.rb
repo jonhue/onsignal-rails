@@ -9,6 +9,10 @@ module DeviseOnesignal
             before_action :set_device
         end
 
+        def set_device_owner
+            current_user if current_user
+        end
+
         private
 
         def set_device
@@ -20,10 +24,6 @@ module DeviseOnesignal
                 device.owner = set_device_owner
                 device.save!
             end
-        end
-
-        def set_device_owner
-            super || current_user if current_user
         end
 
     end
