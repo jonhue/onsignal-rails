@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
     gem.homepage              = 'https://github.com/jonhue/devise-onesignal'
     gem.license               = 'MIT'
 
-    gem.files                 = `git ls-files`.split("\n")
+    gem.files                 = Dir['README.md', 'CHANGELOG.md', 'LICENSE', 'lib/**/*', 'vendor/**/*']
     gem.require_paths         = ['lib']
 
     gem.post_install_message  = IO.read('INSTALL.md')
