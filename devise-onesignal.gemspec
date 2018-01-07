@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
     gem.summary               = 'Implement user targeted cross-platform notifications in your Rails app'
     gem.description           = 'Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. This gem can also be used without Devise, but it is primarily intended to be used along with some sort of user-management-system.'
     gem.authors               = 'Jonas Hübotter'
-    gem.email                 = 'jonas.huebotter@gmail.com'
+    gem.email                 = 'me@jonhue.me'
     gem.homepage              = 'https://github.com/jonhue/devise-onesignal'
     gem.license               = 'MIT'
 
