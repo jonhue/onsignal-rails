@@ -1,4 +1,4 @@
-require 'rails'
+require 'rails/railtie'
 
 module DeviseOnesignal
     class Railtie < Rails::Railtie
