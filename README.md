@@ -149,6 +149,8 @@ In your controllers and views you can access a `current_device` method that retu
 
 Just call `OneSignalSubscribe();` in your frontend code and OneSignal will ask your user for permission to send notifications. On the following request an existing `Device` object will either get updated or a new one will get created.
 
+You can check whether the current user has already enabled notifications by using the `OneSignalSubscribed();` function.
+
 ### Unsubscribing
 
 **Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.

@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 3.2.0 - 2018-01-21
+
+* features
+    * add `OneSignalSubscribed()` function
+
 ### 3.1.5 - 2018-01-06
 
 * enhancements
