@@ -71,6 +71,8 @@ Now let us include the neccessary javascript files in our application (`apps/ass
 //= require devise-onesignal
 ```
 
+**Note:** If you are using Webpack instead of Sprockets, add the devise-onesignal NPM package. If you haven't already, you have to add the [ERB loader](https://github.com/rails/webpacker#erb) to Webpack.
+
 Finally initialize the javascript component when your assets load. If you are using Rails 5 with Turbolinks, this could look like this:
 
 ```js
