@@ -1,6 +1,6 @@
 {
   "name": "devise-onesignal",
-  "version": "1.0.0",
+  "version": "3.2.0",
   "description": "Implement user targeted cross-platform notifications in your Rails app",
   "main": "vendor/assets/javascripts/devise-onesignal.js.erb",
   "repository": "https://github.com/jonhue/devise-onesignal",
