@@ -1,5 +1,9 @@
 # Deprecations
 
+### 4.0.0 - 2018/02/08
+
+* removed Sprockets support
+
 ### 3.0.0 - 2017-12-21
 
 * `devise_class` configuration method removed
