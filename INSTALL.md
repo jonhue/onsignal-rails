@@ -3,14 +3,14 @@
 
 There are four wo more steps to take:
 
-1) Enter your OneSignal App ID in config/initializers/devise-onesignal.rb
-2) Run `rails g devise_onesignal` and `rails db:migrate`
+1) Run `rails g devise_onesignal` and `rails db:migrate`
+2) Enter your OneSignal App ID in config/initializers/devise-onesignal.rb
 3) Add:
 
-    //= require OneSignalSDK
-    //= require devise-onesignal
+    import 'devise-onesignal/dist/OneSignalSDK';
+    import * as deviseOneSignal from 'devise-onesignal';
 
-to your javascript index in app/assets/javascripts/application.js
+to your webpack pack in app/javascript/packs/application.js
 4) Add:
 
     has_devices

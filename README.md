@@ -28,7 +28,7 @@ This gem works well together with [notifications-rails](https://github.com/jonhu
 
 ## Installation
 
-devise-onesignal works with Rails 5.0 onwards. You can add it to your `Gemfile` with:
+devise-onesignal works with Rails 5 onwards. You can add it to your `Gemfile` with:
 
 ```ruby
 gem 'devise-onesignal'
@@ -64,20 +64,18 @@ Define an association in those models whose objects are supposed to be associate
 has_devices
 ```
 
-Now let us include the neccessary javascript files in our application (`apps/assets/javascripts/application.js`):
+Now add the `devise-onesignal` NPM package and import the neccessary javascript files in our webpack pack (`apps/javascript/packs/application.js`):
 
 ```js
-//= require OneSignalSDK
-//= require devise-onesignal
+import 'devise-onesignal/dist/OneSignalSDK';
+import * as deviseOneSignal from 'devise-onesignal';
 ```
-
-**Note:** If you are using Webpack instead of Sprockets, add the devise-onesignal NPM package. If you haven't already, you have to add the [ERB loader](https://github.com/rails/webpacker#erb) to Webpack.
 
 Finally initialize the javascript component when your assets load. If you are using Rails 5 with Turbolinks, this could look like this:
 
 ```js
-document.addEventListener( 'turbolinks:load', function() {
-    OneSignalInit();
+$(document).on( 'turbolinks:load', function() {
+    deviseOneSignal.init( '<%= DeviseOnesignal.configuration.app_id %>', <%= DeviseOnesignal.configuration.auto_register %>, <%= DeviseOnesignal.configuration.persist_notification %> );
 });
 ```
 
@@ -149,15 +147,15 @@ In your controllers and views you can access a `current_device` method that retu
 
 ### Subscribing
 
-Just call `OneSignalSubscribe();` in your frontend code and OneSignal will ask your user for permission to send notifications. On the following request an existing `Device` object will either get updated or a new one will get created.
+Just call `deviseOneSignal.subscribe(<%= DeviseOnesignal.configuration.subscribe_with_modal %>);` in your frontend code and OneSignal will ask your user for permission to send notifications. On the following request an existing `Device` object will either get updated or a new one will get created.
 
-You can check whether the current user has already enabled notifications by using the `OneSignalSubscribed();` function.
+You can check whether the current user has already enabled notifications by using the `deviseOneSignal.subscribed();` function.
 
 ### Unsubscribing
 
 **Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.
 
-If you want to completely remove a user from OneSignal, call `OneSignalUnsubscribe();` in your javascript.
+If you want to completely remove a user from OneSignal, call `deviseOneSignal.unsubscribe();` in your javascript.
 
 ---
 
