@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 4.0.1 - 2018/02/08
+
+* bugfixes
+    * fixed not exporting `init()` function
+
 ### 4.0.0 - 2018/02/08
 
 * features

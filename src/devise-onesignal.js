@@ -1,4 +1,4 @@
-function init( appId, autoRegister = false, persistNotification = false ) {
+export function init( appId, autoRegister = false, persistNotification = false ) {
 
     window.DeviseOneSignalPlayerId = null;
     window.DeviseOneSignal = window.OneSignal || [];
