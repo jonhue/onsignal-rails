@@ -74,10 +74,12 @@ import * as deviseOneSignal from 'devise-onesignal';
 Finally initialize the javascript component when your assets load. If you are using Rails 5 with Turbolinks, this could look like this:
 
 ```js
-$(document).on( 'turbolinks:load', function() {
+$(document).on( 'ready', function() {
     deviseOneSignal.init( '<%= DeviseOnesignal.configuration.app_id %>', <%= DeviseOnesignal.configuration.auto_register %>, <%= DeviseOnesignal.configuration.persist_notification %> );
 });
 ```
+
+**Note:** Listen for the `ready` event even if you are using Turbolinks, as the `init()` function should only be called once for every full HTTP request.
 
 ## Usage
 

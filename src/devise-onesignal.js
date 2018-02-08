@@ -1,9 +1,7 @@
-window.DeviseOneSignalPlayerId = null;
-window.DeviseOneSignal = window.OneSignal || [];
-
-
-
 function init( appId, autoRegister = false, persistNotification = false ) {
+
+    window.DeviseOneSignalPlayerId = null;
+    window.DeviseOneSignal = window.OneSignal || [];
 
     window.DeviseOneSignal.push([ 'init', {
         appId: appId,
