@@ -1,1 +1,1 @@
-Now run `rails db:migrate` to add devise-onesignal to your database.
+Now run `rails db:migrate` to add onsignal to your database.

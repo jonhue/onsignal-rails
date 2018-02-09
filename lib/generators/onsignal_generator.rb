@@ -1,12 +1,12 @@
 require 'rails/generators'
 require 'rails/generators/migration'
 
-class DeviseOnesignalGenerator < Rails::Generators::Base
+class OnsignalGenerator < Rails::Generators::Base
 
     include Rails::Generators::Migration
 
     source_root File.join File.dirname(__FILE__), 'templates'
-    desc 'Install devise-onesignal'
+    desc 'Install onsignal'
 
     def self.next_migration_number dirname
         if ActiveRecord::Base.timestamped_migrations
@@ -17,11 +17,11 @@ class DeviseOnesignalGenerator < Rails::Generators::Base
     end
 
     def create_initializer
-        template 'initializer.rb', 'config/initializers/devise-onesignal.rb'
+        template 'initializer.rb', 'config/initializers/onsignal.rb'
     end
 
     def create_device_migration_file
-        migration_template 'devices_migration.rb.erb', 'db/migrate/devise_onesignal_migration.rb', migration_version: migration_version
+        migration_template 'devices_migration.rb.erb', 'db/migrate/onsignal_migration.rb', migration_version: migration_version
     end
     def create_device_model
         template 'device_model.rb', 'app/models/device.rb'

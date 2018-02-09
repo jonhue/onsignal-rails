@@ -1,6 +1,6 @@
 require 'rails/railtie'
 
-module DeviseOnesignal
+module OnSignal
     class Engine < ::Rails::Engine
     end
 end

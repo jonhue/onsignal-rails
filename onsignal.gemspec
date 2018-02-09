@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path(File.join('..', 'lib', 'devise-onesignal', 'version'), __FILE__)
+require File.expand_path(File.join('..', 'lib', 'onsignal', 'version'), __FILE__)
 
 Gem::Specification.new do |gem|
-    gem.name                  = 'devise-onesignal'
-    gem.version               = DeviseOnesignal::VERSION
+    gem.name                  = 'onsignal'
+    gem.version               = OnSignal::VERSION
     gem.platform              = Gem::Platform::RUBY
-    gem.summary               = 'Implement user targeted cross-platform notifications in your Rails app'
-    gem.description           = 'Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. This gem can also be used without Devise, but it is primarily intended to be used along with some sort of user-management-system.'
+    gem.summary               = 'OneSignal API wrapper simplifying user targeted cross platform notifications'
+    gem.description           = 'OneSignal API wrapper simplifying user targeted cross platform notifications.'
     gem.authors               = 'Jonas Hübotter'
     gem.email                 = 'me@jonhue.me'
-    gem.homepage              = 'https://github.com/jonhue/devise-onesignal'
+    gem.homepage              = 'https://github.com/jonhue/onsignal'
     gem.license               = 'MIT'
 
     gem.files                 = Dir['README.md', 'CHANGELOG.md', 'LICENSE', 'lib/**/*']
