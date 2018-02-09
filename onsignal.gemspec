@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path(File.join('..', 'lib', 'onsignal', 'version'), __FILE__)
+require File.expand_path(File.join('..', 'lib', 'on_signal', 'version'), __FILE__)
 
 Gem::Specification.new do |gem|
     gem.name                  = 'onsignal'
