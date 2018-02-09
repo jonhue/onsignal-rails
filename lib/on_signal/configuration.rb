@@ -11,10 +11,10 @@ module OnSignal
 
     class Configuration
 
-        attr_accessor :const_name
+        attr_accessor :device_const
 
         def initialize
-            @const_name = 'Device'
+            @device_const = 'Device'
         end
 
     end

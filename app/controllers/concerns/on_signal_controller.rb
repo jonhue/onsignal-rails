@@ -15,7 +15,7 @@ module OnSignalController
     def set_onsignal
         unless cookies[:oneSignalPlayerId].nil?
             onesignal_player_id = cookies[:oneSignalPlayerId]
-            device = OnSignal.configuration.const_name.constantize.find_or_create_by! onesignal_id: onesignal_player_id
+            device = OnSignal.configuration.device_const.constantize.find_or_create_by! onesignal_id: onesignal_player_id
             device.onesignal_permission = cookies[:oneSignalPlayerPermission]
             device.last_used = Time.now
             device.owner = set_device_owner
