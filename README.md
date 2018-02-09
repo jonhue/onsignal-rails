@@ -1,23 +1,28 @@
-# devise-onesignal
+# OnSignal
 
-[![Gem Version](https://badge.fury.io/rb/devise-onesignal.svg)](https://badge.fury.io/rb/devise-onesignal) <img src="https://travis-ci.org/jonhue/devise-onesignal.svg?branch=master" />
+![NPM Version](https://img.shields.io/npm/v/onsignal.svg) [![Gem Version](https://badge.fury.io/rb/onsignal.svg)](https://badge.fury.io/rb/onsignal) <img src="https://travis-ci.org/jonhue/onsignal.svg?branch=master" />
 
-Implement user targeted cross-platform notifications with OneSignal & Devise in your Rails app. Can also be used without Devise, but is primarily intended to be used along with some sort of user-management-system.
+A OneSignal API wrapper simplifying user targeted cross platform notifications. OnSignal consists of a JavaScript and a Rails API:
 
-This gem works well together with [notifications-rails](https://github.com/jonhue/notifications-rails) and its [notification-pusher-onesignal](https://github.com/jonhue/notifications-rails/tree/master/notification-pusher/notification-pusher-onesignal) component which introduces a notifications handling & pushing API. To build a cross-platform notification solution also add the [native](https://github.com/NativeGap/native-ruby) gem to your app.
+* [JavaScript API](#javascript-api): Handle user subscriptions to OneSignal in your frontend code.
+* [Rails API](#javascript-api): Attach OneSignal players to user records provided by an authentication solution.
 
 ---
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [Usage](#usage)
-    * [Devise object](#devise-object)
-    * [Device methods](#device-methods)
-    * [current_device](#current_device)
+* [JavaScript API](#javascript-api)
+    * [Overview](#overview)
     * [Subscribing](#subscribing)
     * [Unsubscribing](#unsubscribing)
-* [Configuration](#configuration)
+    * [Additional functions](#additional-functions)
+* [Rails API](#javascript-api)
+    * [Installation](#installation)
+    * [User associations](#user-associations)
+    * [Devices](#devices)
+        * [Methods](#methods)
+        * [Helpers](#helpers)
+    * [Configuration](#configuration)
 * [To Do](#to-do)
 * [Contributing](#contributing)
     * [Contributors](#contributors)
@@ -26,12 +31,72 @@ This gem works well together with [notifications-rails](https://github.com/jonhu
 
 ---
 
-## Installation
+## JavaScript API
 
-devise-onesignal works with Rails 5 onwards. You can add it to your `Gemfile` with:
+Handle user subscriptions to OneSignal in your frontend code.
+
+### Overview
+
+```javascript
+import OnSignal from 'onsignal';
+let onSignal = new OnSignal( 'OneSignal App ID', {
+    autoRegister: false
+});
+
+// Object to call OneSignal API from
+onSignal.oneSignal;
+
+// Current users player ID
+onSignal.playerId;
+
+// Current users permission
+onSignal.permission;
+```
+
+#### Options
+
+Pass options to OneSignal's `push(['init', {...}])` function as a hash. Default values are:
+
+* `autoRegister` Automatically try to subscribe the user when loading a page. Accepts a boolean. Defaults to `false`.
+* `persistNotification` Automatically dismiss notifications after ~20 seconds in Chrome Desktop v47+. Accepts a boolean. Defaults to `false`.
+* `welcomeNotification` Hash configuring the default OneSignal welcome notification. Accepts a hash. Defaults to `{ disable: true }`.
+* `notifyButton` Hash configuring the default OneSignal notify button at the bottom right of the screen. Accepts a hash. Defaults to `{ enable: false }`.
+
+### Subscribing
+
+Just call `onSignal.subscribe();` and OneSignal will ask your user for permission to send notifications if he is not subscribed yet. _On the following request an existing `Device` object will either get updated or a new one will get created. (if using the Rails API)_
+
+#### Options
+
+Pass options to OneSignal's `registerForPushNotifications()` function as a hash. Default values are:
+
+* `modalPrompt` Whether or not to use a custom prompt instead of the browsers default to ask for permission. Accepts a boolean. Defaults to `false`.
+
+### Unsubscribing
+
+**Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.
+
+If you want to completely remove a user from OneSignal, call `onSignal.unsubscribe();`.
+
+### Additional functions
+
+```javascript
+// Check if a user is subscribed to OneSignal
+onSignal.isSubscribed()
+```
+
+---
+
+## Rails API
+
+Attach OneSignal players to user records provided by an authentication solution.
+
+### Installation
+
+OnSignal works with Rails 5 onwards. You can add it to your `Gemfile` with:
 
 ```ruby
-gem 'devise-onesignal'
+gem 'onsignal'
 ```
 
 And then execute:
@@ -40,77 +105,70 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install devise-onesignal
+    $ gem install onsignal
 
 If you always want to be up to date fetch the latest from GitHub in your `Gemfile`:
 
 ```ruby
-gem 'devise-onesignal', github: 'jonhue/devise-onesignal'
+gem 'onsignal', github: 'jonhue/onsignal'
 ```
 
 Now run the generator:
 
-    $ rails g devise_onesignal
+    $ rails g onsignal
 
 To wrap things up, migrate the changes into your database:
 
     $ rails db:migrate
 
-It is time to [create your OneSignal app](https://onesignal.com) if you haven't already and set your application ID in the created initializer (`config/initializers/devise-onesignal.rb`).
+### User associations
 
-Define an association in those models whose objects are supposed to be associated with OneSignal players. For example `User` in `app/models/user.rb`.
-
-```ruby
-has_devices
-```
-
-Now add the `devise-onesignal` NPM package and import the neccessary javascript files in our webpack pack (`apps/javascript/packs/application.js`):
-
-```js
-import 'devise-onesignal/dist/OneSignalSDK';
-import * as deviseOneSignal from 'devise-onesignal';
-```
-
-Finally initialize the javascript component when your assets load. If you are using Rails 5 with Turbolinks, this could look like this:
-
-```js
-$(document).on( 'ready', function() {
-    deviseOneSignal.init( '<%= DeviseOnesignal.configuration.app_id %>', <%= DeviseOnesignal.configuration.auto_register %>, <%= DeviseOnesignal.configuration.persist_notification %> );
-});
-```
-
-**Note:** Listen for the `ready` event even if you are using Turbolinks, as the `init()` function should only be called once for every full HTTP request.
-
-## Usage
-
-### Devise object
-
-You most likely want to associate your devise object (e.g. `current_user`) with your OneSignal integration. Now, if your Devise model is called `User` and the `current_user` method is available you don't have to worry about that.
-
-Let's say our Devise model is named `Admin`. Just add a method to your `ApplicationController`:
+Define an association in models whose objects are supposed to be associated with OneSignal players. For example `Admin` in `app/models/admin.rb`.
 
 ```ruby
-def set_device_owner
+class Admin < ApplicationRecord
+    onsignal
+end
+```
+
+Next attach a user object by defining a `set_onsignal_user` method. Let's say model is named `Admin` and `current_admin` is available at controller level. Just add a method to your `ApplicationController`:
+
+```ruby
+def set_onsignal_user
     current_admin if current_admin
 end
 ```
 
-**Note:** Essentially `set_device_owner` has to return a class object *or* `nil`.
+**Note:** If a `current_user` method is available at controller level this method is not required.
 
-### Device methods
+You are now able to get OneSignal players for a specific user:
 
-devise-onesignal introduces a `Device` activerecord model. Every object of your devise class can have multiple devices, one for each device / browser they enabled OneSignal at least once.
+```ruby
+a = Admin.first
+
+# All device records of a user
+a.devices
+
+# All OneSignal Player ID's of a user returned as an array
+a.onesignal_player_ids
+```
+
+### Devices
+
+OnSignal introduces a `Device` ActiveRecord model. You can [configure](#configuration) its name. Every record of an associated user class can have multiple devices - one for each device / browser they enabled OneSignal on.
+
+#### Methods
 
 ```ruby
 d = Device.first
 
-# Returns object associated with device. Can return `nil`.
+# Returns user associated with device. Can return `nil`.
 d.owner
 
 # Returns OneSignal player id
 d.onesignal_id
 
-# Returns OneSignal permission ( `granted`/`denied`/`default` )
+# Returns OneSignal permission ( `granted` / `denied` / `default` )
 d.onesignal_permission
 
 # Some timestamps
@@ -129,55 +187,21 @@ d.onesignal_disabled?
 d.onesignal_set?
 ```
 
-### has_devices
+#### Helpers
 
-This method makes `devices` available in your models. Let's say you have a user which has multiple devices he has enabled OneSignal on:
+In your controllers and views you can access a `current_onsignal` method that returns the `Device` object of the current OneSignal subscription. If the user browsing your site is not subscribed to OneSignal, `current_onsignal` returns an uncommitted `Device` object with some helpful information, like the `permission` attribute, set.
 
-```ruby
-u = User.first
+### Configuration
 
-# All devices of a user
-u.devices
-
-# All OneSignal Player ID's of a user returned as a hash
-u.onesignal_player_ids
-```
-
-### current_device
-
-In your controllers and views you can access a `current_device` method that returns the `Device` object of the current OneSignal subscription. If the user browsing your site is not subscribed to OneSignal, `current_device` returns an uncommitted `Device` object with some helpful information, like the `permission` attribute, set.
-
-### Subscribing
-
-Just call `deviseOneSignal.subscribe(<%= DeviseOnesignal.configuration.subscribe_with_modal %>);` in your frontend code and OneSignal will ask your user for permission to send notifications. On the following request an existing `Device` object will either get updated or a new one will get created.
-
-You can check whether the current user has already enabled notifications by using the `deviseOneSignal.subscribed();` function.
-
-### Unsubscribing
-
-**Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.
-
-If you want to completely remove a user from OneSignal, call `deviseOneSignal.unsubscribe();` in your javascript.
-
----
-
-## Configuration
-
-You can configure devise-onesignal by passing a block to `configure`. This can be done in `config/initializers/devise-onesignal.rb`:
+You can configure OnSignal by passing a block to `configure`. This can be done in `config/initializers/onsignal.rb`:
 
 ```ruby
-DeviseOnesignal.configure do |config|
-    config.app_id = ''
+OnSignal.configure do |config|
+    config.device_const = 'Device'
 end
 ```
 
-**`app_id` (required)** Your OneSignal app id. Takes a string. Create one here: https://onesignal.com
-
-**`auto_register`** Automatically try to subscribe the user when loading a page. Takes a boolean. Defaults to `false`.
-
-**`persist_notification`** Automatically dismiss the notification after ~20 seconds in Chrome. Takes a boolean. Defaults to `false`.
-
-**`subscribe_with_modal`** Show a modal instead of a native browser window when subscribing a user to OneSignal. Takes a boolean. Defaults to `false`.
+* `device_const` Name of the constant exposing devices. Takes a constant name (string). Defaults to `'Device'`.
 
 ---
 

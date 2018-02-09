@@ -6,7 +6,7 @@ class OnsignalGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
 
     source_root File.join File.dirname(__FILE__), 'templates'
-    desc 'Install onsignal'
+    desc 'Install OnSignal'
 
     def self.next_migration_number dirname
         if ActiveRecord::Base.timestamped_migrations

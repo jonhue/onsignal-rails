@@ -1,4 +1,4 @@
-**Thank you for installing devise-onesignal!**
+**Thank you for installing OnSignal!**
 
 
 There are four wo more steps to take:

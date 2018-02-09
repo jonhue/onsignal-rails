@@ -6,11 +6,9 @@ class OnSignal {
 
         let defaults = {
             autoRegister: false,
-            persistNotification: false, // Automatically dismiss the notification after ~20 seconds in Chrome Desktop v47+
+            persistNotification: false,
             welcomeNotification: {
-                disable: true,
-                title: '',
-                message: ''
+                disable: true
             },
             notifyButton: {
                 enable: false

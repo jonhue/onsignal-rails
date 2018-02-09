@@ -1,12 +1,13 @@
 .git
 .github
+app
 lib
 .gitignore
 .travis.yml
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 DEPRECATIONS.md
-devise-onesignal.gemspec
+onsignal.gemspec
 *.gem
 Gemfile
 Gemfile.lock

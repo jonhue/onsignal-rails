@@ -4,6 +4,12 @@
 
 * nothing yet
 
+### 5.0.0 - 2018/02/09
+
+* features
+    * new ES6 JavaScript API
+    * streamlined `Device` model (Rails API)
+
 ### 4.0.1 - 2018/02/08
 
 * bugfixes
