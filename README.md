@@ -39,18 +39,21 @@ Handle user subscriptions to OneSignal in your frontend code.
 
 ```javascript
 import OnSignal from 'onsignal';
-let onSignal = new OnSignal( 'OneSignal App ID', {
-    autoRegister: false
-});
 
-// Object to call OneSignal API from
-onSignal.oneSignal;
+document.addEventListener( 'ready', () => {
+    let onSignal = new OnSignal( 'OneSignal App ID', {
+        autoRegister: false
+    });
 
-// Current users player ID
-onSignal.playerId;
+    // Object to call OneSignal API from
+    onSignal.oneSignal;
 
-// Current users permission
-onSignal.permission;
+    // Current users player ID
+    onSignal.playerId;
+
+    // Current users permission
+    onSignal.permission;
+};
 ```
 
 #### Options
