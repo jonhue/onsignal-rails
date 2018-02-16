@@ -42,7 +42,7 @@ import 'onsignal/dist/OneSignalSDK';
 import OnSignal from 'onsignal';
 
 document.addEventListener( 'ready', () => {
-    let onSignal = new OnSignal( 'OneSignal App ID', {
+    const onSignal = new OnSignal( 'OneSignal App ID', {
         autoRegister: false
     });
 
