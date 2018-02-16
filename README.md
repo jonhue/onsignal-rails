@@ -38,6 +38,7 @@ Handle user subscriptions to OneSignal in your frontend code.
 ### Overview
 
 ```javascript
+import 'onsignal/dist/OneSignalSDK';
 import OnSignal from 'onsignal';
 
 document.addEventListener( 'ready', () => {
