@@ -131,7 +131,7 @@ class Admin < ApplicationRecord
 end
 ```
 
-Next attach a user object by defining a `set_onsignal_user` method. Let's say model is named `Admin` and `current_admin` is available at controller level. Just add a method to your `ApplicationController`:
+Next attach a user object by defining a `set_onsignal_user` method. Let's say model our is named `Admin` and `current_admin` is available at controller level. Just add a method to your `ApplicationController`:
 
 ```ruby
 def set_onsignal_user

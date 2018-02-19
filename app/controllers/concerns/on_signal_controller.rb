@@ -18,7 +18,7 @@ module OnSignalController
             device = OnSignal.configuration.device_const.constantize.find_or_create_by! onesignal_id: onesignal_player_id
             device.onesignal_permission = cookies[:oneSignalPlayerPermission]
             device.last_used = Time.now
-            device.owner = set_onesignal_user
+            device.owner = set_onsignal_user
             device.save!
         end
     end

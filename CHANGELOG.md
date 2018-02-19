@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 5.0.1 - 2018/02/19
+
+* bugfixes
+    * fixed `undefined local variable or method 'set_onesignal_user'`
+
 ### 5.0.0 - 2018/02/09
 
 * features
