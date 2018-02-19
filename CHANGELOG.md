@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 5.0.2 - 2018/02/19
+
+* bugfixes
+    * fixed `undefined local variable or method 'current_user'` if not using devise
+
 ### 5.0.1 - 2018/02/19
 
 * bugfixes

@@ -7,7 +7,7 @@ module OnSignalController
     end
 
     def set_onsignal_user
-        current_user if current_user
+        current_user if respond_to?(:current_user) && current_user
     end
 
     private
