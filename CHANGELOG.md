@@ -4,6 +4,11 @@
 
 * nothing yet
 
+### 5.0.4 - 2018/02/23
+
+* bugfixes
+    * fixed `isSubscribed()` function
+
 ### 5.0.3 - 2018/02/23
 
 * bugfixes
