@@ -4,8 +4,8 @@ module OnSignalModel
 
     module ClassMethods
         def onsignal
-            has_many :devices, as: :owner, class_name: OnSignal.configuration.device_const, dependent: :destroy
-            include OnSignal::Owner::InstanceMethods
+            has_many :devices, as: :owner, class_name: OnSignal.configuration&.device_const || 'Device', dependent: :destroy
+            include OnSignalModel::InstanceMethods
         end
     end
 
