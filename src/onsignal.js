@@ -17,7 +17,7 @@ class OnSignal {
         options = extend( {}, defaults, options );
         options.appId = appId;
 
-        object = this;
+        let object = this;
 
         object._oneSignal.push(['init', options]);
 
