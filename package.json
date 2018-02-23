@@ -1,6 +1,6 @@
 {
   "name": "onsignal",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "OneSignal API wrapper simplifying user targeted cross platform notifications",
   "main": "src/onsignal.js",
   "repository": "https://github.com/jonhue/onsignal",

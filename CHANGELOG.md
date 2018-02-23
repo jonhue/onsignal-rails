@@ -13,6 +13,7 @@
 
 * bugfixes
     * fixed `undefined local variable or method 'set_onesignal_user'`
+    * fixed `Uncaught (in promise) TypeError: Cannot set property '_permission' of undefined`
 
 ### 5.0.0 - 2018/02/09
 

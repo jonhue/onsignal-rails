@@ -25,10 +25,10 @@ class OnSignal {
                     this._playerId = playerId;
                     document.cookie = 'oneSignalPlayerId=' + this._playerId;
                 };
-                this._oneSignal.push([ 'getNotificationPermission', function(permission) {
+                this._oneSignal.getNotificationPermission().then((permission) => {
                     this._permission = permission;
                     document.cookie = 'oneSignalPlayerPermission=' + this._permission;
-                }]);
+                });
             });
         });
     }
