@@ -8,6 +8,7 @@
 
 * bugfixes
     * fixed `undefined local variable or method 'current_user'` if not using devise
+    * fixed `isSubscribed()` function
 
 ### 5.0.1 - 2018/02/19
 

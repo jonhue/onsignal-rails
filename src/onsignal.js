@@ -17,17 +17,19 @@ class OnSignal {
         options = extend( {}, defaults, options );
         options.appId = appId;
 
-        this._oneSignal.push(['init', options]);
+        object = this;
 
-        this._oneSignal.push(() => {
-            this._oneSignal.getUserId().then((playerId) => {
+        object._oneSignal.push(['init', options]);
+
+        object._oneSignal.push(() => {
+            object._oneSignal.getUserId().then((playerId) => {
                 if ( playerId != null ) {
-                    this._playerId = playerId;
-                    document.cookie = 'oneSignalPlayerId=' + this._playerId;
+                    object._playerId = playerId;
+                    document.cookie = 'oneSignalPlayerId=' + object._playerId;
                 };
-                this._oneSignal.getNotificationPermission().then((permission) => {
-                    this._permission = permission;
-                    document.cookie = 'oneSignalPlayerPermission=' + this._permission;
+                object._oneSignal.getNotificationPermission().then((permission) => {
+                    object._permission = permission;
+                    document.cookie = 'oneSignalPlayerPermission=' + object._permission;
                 });
             });
         });
@@ -82,7 +84,7 @@ function extend() {
             if ( arguments[i].hasOwnProperty(key) )
                 arguments[0][key] = arguments[i][key];
     return arguments[0];
-};
+}
 
 
 export default OnSignal;
