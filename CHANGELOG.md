@@ -4,7 +4,7 @@
 
 * nothing yet
 
-### 5.0.2 - 2018/02/23
+### 5.0.3 - 2018/02/23
 
 * bugfixes
     * fixed `object is not defined`
