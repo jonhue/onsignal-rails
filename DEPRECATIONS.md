@@ -2,7 +2,7 @@
 
 ### 5.0.0 - 2018/02/09
 
-* complete rewrite of the Rails & JavaScript APIs
+* complete rewrite of the Rails API
 
 ### 4.0.0 - 2018/02/08
 

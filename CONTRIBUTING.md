@@ -15,7 +15,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [OnSignal Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project and everyone participating in it is governed by the [OnSignal on Rails Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## Issues
 
@@ -40,4 +40,4 @@ If you are updating any of the CHANGELOG files or are asked to update the CHANGE
 
 Finally, if your pull request affects documentation or any non-code changes, guidelines for those changes are [available here](CONTRIBUTING.md)
 
-Thanks for contributing to OnSignal!
+Thanks for contributing to OnSignal on Rails!

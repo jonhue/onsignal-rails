@@ -1,17 +1,17 @@
-# OnSignal
+# OnSignal on Rails
 
-![NPM Version](https://img.shields.io/npm/v/onsignal.svg) [![Gem Version](https://badge.fury.io/rb/onsignal.svg)](https://badge.fury.io/rb/onsignal) <img src="https://travis-ci.org/jonhue/onsignal.svg?branch=master" />
+[![Gem Version](https://badge.fury.io/rb/onsignal.svg)](https://badge.fury.io/rb/onsignal) <img src="https://travis-ci.org/jonhue/onsignal-rails.svg?branch=master" />
 
 A OneSignal API wrapper simplifying user targeted cross platform notifications. OnSignal consists of a JavaScript and a Rails API:
 
-* [JavaScript API](#javascript-api): Handle user subscriptions to OneSignal in your frontend code.
-* [Rails API](#javascript-api): Attach OneSignal players to user records provided by an authentication solution.
+* [JavaScript API](https://github.com/jonhue/onsignal): Handle user subscriptions to OneSignal in your frontend code.
+* [Rails API](#usage): Attach OneSignal players to user records provided by an authentication solution.
 
 ---
 
 ## Table of Contents
 
-* [JavaScript API](#javascript-api)
+* [Usage](#usage)
     * [Overview](#overview)
     * [Subscribing](#subscribing)
     * [Unsubscribing](#unsubscribing)
@@ -28,70 +28,9 @@ A OneSignal API wrapper simplifying user targeted cross platform notifications. 
     * [Contributors](#contributors)
     * [Semantic versioning](#semantic-versioning)
 * [License](#license)
-
 ---
 
-## JavaScript API
-
-Handle user subscriptions to OneSignal in your frontend code.
-
-### Overview
-
-```javascript
-import 'onsignal/dist/OneSignalSDK';
-import OnSignal from 'onsignal';
-
-document.addEventListener( 'ready', () => {
-    const onSignal = new OnSignal( 'OneSignal App ID', {
-        autoRegister: false
-    });
-
-    // Object to call OneSignal API from
-    onSignal.oneSignal;
-
-    // Current users player ID
-    onSignal.playerId;
-
-    // Current users permission
-    onSignal.permission;
-};
-```
-
-#### Options
-
-Pass options to OneSignal's `push(['init', {...}])` function as a hash. Default values are:
-
-* `autoRegister` Automatically try to subscribe the user when loading a page. Accepts a boolean. Defaults to `false`.
-* `persistNotification` If set to `false `, automatically dismisses notifications after ~20 seconds in Chrome Desktop v47+. Accepts a boolean. Defaults to `false`.
-* `welcomeNotification` Hash configuring the default OneSignal welcome notification. Accepts a hash. Defaults to `{ disable: true }`.
-* `notifyButton` Hash configuring the default OneSignal notify button at the bottom right of the screen. Accepts a hash. Defaults to `{ enable: false }`.
-
-### Subscribing
-
-Just call `onSignal.subscribe();` and OneSignal will ask your user for permission to send notifications if he is not subscribed yet. _On the following request an existing `Device` object will either get updated or a new one will get created. (if using the Rails API)_
-
-#### Options
-
-Pass options to OneSignal's `registerForPushNotifications()` function as a hash. Default values are:
-
-* `modalPrompt` Whether or not to use a custom prompt instead of the browsers default to ask for permission. Accepts a boolean. Defaults to `false`.
-
-### Unsubscribing
-
-**Note:** You most likely don't want to let your users unsubscribe from receiving notifications, but instead allow them to manually disable receiving any new notifications. For that purpose use the [notifications-rails](https://github.com/jonhue/notifications-rails) gem, which adds a notification API and detailed user settings.
-
-If you want to completely remove a user from OneSignal, call `onSignal.unsubscribe();`.
-
-### Additional functions
-
-```javascript
-// Check if a user is subscribed to OneSignal
-onSignal.isSubscribed()
-```
-
----
-
-## Rails API
+## Usage
 
 Attach OneSignal players to user records provided by an authentication solution.
 
@@ -211,33 +150,33 @@ end
 
 ## To Do
 
-[Here](https://github.com/jonhue/devise-onesignal/projects/1) is the full list of current projects.
+[Here](https://github.com/jonhue/onsignal-rails/projects/1) is the full list of current projects.
 
-To propose your ideas, initiate the discussion by adding a [new issue](https://github.com/jonhue/devise-onesignal/issues/new).
+To propose your ideas, initiate the discussion by adding a [new issue](https://github.com/jonhue/onsignal-rails/issues/new).
 
 ---
 
 ## Contributing
 
-We hope that you will consider contributing to devise-onesignal. Please read this short overview for some information about how to get started:
+We hope that you will consider contributing to OnSignal on Rails. Please read this short overview for some information about how to get started:
 
-[Learn more about contributing to this repository](https://github.com/jonhue/devise-onesignal/blob/master/CONTRIBUTING.md), [Code of Conduct](https://github.com/jonhue/devise-onesignal/blob/master/CODE_OF_CONDUCT.md)
+[Learn more about contributing to this repository](CONTRIBUTING.md), [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ### Contributors
 
 Give the people some :heart: who are working on this project. See them all at:
 
-https://github.com/jonhue/devise-onesignal/graphs/contributors
+https://github.com/jonhue/onsignal-rails/graphs/contributors
 
 ### Semantic Versioning
 
-devise-onesignal follows Semantic Versioning 2.0 as defined at http://semver.org.
+OnSignal on Rails follows Semantic Versioning 2.0 as defined at http://semver.org.
 
 ## License
 
 MIT License
 
-Copyright (c) 2017 Jonas Hübotter
+Copyright (c) 2018 Jonas Hübotter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
