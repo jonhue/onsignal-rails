@@ -12,11 +12,6 @@ A OneSignal API wrapper simplifying user targeted cross platform notifications. 
 ## Table of Contents
 
 * [Usage](#usage)
-    * [Overview](#overview)
-    * [Subscribing](#subscribing)
-    * [Unsubscribing](#unsubscribing)
-    * [Additional functions](#additional-functions)
-* [Rails API](#javascript-api)
     * [Installation](#installation)
     * [User associations](#user-associations)
     * [Devices](#devices)
