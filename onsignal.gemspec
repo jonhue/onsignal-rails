@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
     gem.files                 = Dir['README.md', 'CHANGELOG.md', 'LICENSE', 'lib/**/*', 'app/**/*']
     gem.require_paths         = ['lib']
 
-    gem.add_dependency 'railties', '>= 5.0'
+    gem.add_dependency 'railties', '6.0.0'
     gem.add_dependency 'activesupport', '>= 5.0'
     gem.add_dependency 'activerecord', '>= 5.0'
     gem.add_dependency 'actionview', '>= 5.0'
