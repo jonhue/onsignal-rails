@@ -1,15 +1,19 @@
-class OnSignal::Device < ApplicationRecord
+# frozen_string_literal: true
 
+module OnSignal
+  class Device < ApplicationRecord
     def onesignal_enabled?
-        self.onesignal_permission == 'granted'
+      onesignal_permission == 'granted'
     end
+
     def onesignal_disabled?
-        self.onesignal_permission == 'denied'
+      onesignal_permission == 'denied'
     end
+
     def onesignal_set?
-        !self.onesignal_permission == 'default'
+      !onesignal_permission == 'default'
     end
 
     belongs_to :owner, polymorphic: true, optional: true
-
+  end
 end
